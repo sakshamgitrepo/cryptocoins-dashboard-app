@@ -30,3 +30,36 @@
   --color-bg-input: #edf2f7;
   --color-bg-button: #2b6cb0;
 }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  width: 2.8rem;
+  height: 2.8rem;
+  font-family: inherit;
+  font-size: 1rem;
+  margin: 0 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+ 
+}
+
+.pagination button.active {
+  font-weight: 800;
+ }
+
+  @media screen and (max-width:762px) {
+    .pagination button{
+      width: 2rem;
+      height: 2rem;
+      font-size: .9rem;
+    }
+  }
