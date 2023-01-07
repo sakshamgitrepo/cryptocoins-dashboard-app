@@ -33,7 +33,7 @@ const SavedCoin = () => {
         <p>
           You don't have any coins saved. Please save a coin to add it to your
           watch list.{" "}
-          <Link className="hover:underline" to="/">
+          <Link className="hover:underline font-semibold" to="/">
             Click here to search coins.
           </Link>
         </p>

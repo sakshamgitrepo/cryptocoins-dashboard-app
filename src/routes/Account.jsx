@@ -21,9 +21,9 @@ console.log(user?.email.charAt(0).toUpperCase() + user?.email.slice(1).split('@'
     <div className='max-w-[1140px] mx-auto'>
     <div className='flex justify-between items-center my-12 py-8 rounded-div'>
       <div>
-        <h1 className='text-2xl font-bold'>Account</h1>
-        <div>
-          <p>Welcome,{' '}
+        <h1 className='text-3xl font-bold mb-2'>Account</h1>
+        <div className='rounded-div p-4'>
+          <p className='text-2xl border-b-2 text-center mb-3'>Welcome,{' '}
           <b>{user?.email.charAt(0).toUpperCase() + user?.email.slice(1).split('@')[0]}</b>
             </p>
             <p>Email :{' '}{user?.email}</p>

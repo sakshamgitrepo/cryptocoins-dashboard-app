@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AiFillLock, AiOutlineMail } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../contexts/AuthContext';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ThemeContext } from '../contexts/ThemeContext';
+
 
 function Signin() {
   const [email, setEmail] = useState('');
@@ -9,6 +13,8 @@ function Signin() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { signIn } = UserAuth();
+  const { theme } = useContext(ThemeContext);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +23,30 @@ function Signin() {
       await signIn(email, password);
       navigate('/account')
     } catch (e) {
+     
+        if (theme === "light") {
+          toast.error(e.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
+        } else {
+          toast.error(e.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
       setError(e.message);
       console.log(e.message);
     }
@@ -26,7 +56,7 @@ function Signin() {
     <div>
     <div className='max-w-[400px] mx-auto min-h-[600px] px-4 py-20'>
       <h1 className='text-2xl font-bold'>Sign In</h1>
-      {error ? <p className='bg-red-300 p-3 my-2'>{error}</p> : null}
+      {error ? <p className='bg-red-500 font-bold rounded-2xl p-3 my-2'>{error}</p> : null}
 <form 
       onSubmit={handleSubmit}
       >
@@ -62,6 +92,7 @@ function Signin() {
           Sign up
         </Link>
       </p>
+      <ToastContainer/>
     </div>
   </div>
     )

@@ -1,7 +1,7 @@
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 import { UserAuth } from "../contexts/AuthContext";
 import { db } from "../firebase";
@@ -9,6 +9,7 @@ import { db } from "../firebase";
 const CoinItem = ({ coin }) => {
   const [savedCoin, setSavedCoin] = useState(false);
   const { user } = UserAuth();
+  const navigate = useNavigate()
 
   const coinPath = doc(db, 'users', `${user?.email}`);
   const saveCoin = async () => {
@@ -24,14 +25,15 @@ const CoinItem = ({ coin }) => {
         }),
       });
     } else {
-      alert('Please sign in to save a coin to your watch list');
+      alert('Please sign in to save coins to your watch list');
+      navigate('/signin')
     }
   };
   return (
 
     <tr className="h-[80px] border-b overflow-hidden">
       <td onClick={saveCoin}>
-        {savedCoin ? <AiFillStar /> : <AiOutlineStar />}
+        {savedCoin ? <AiFillStar className='cursor-pointer'  /> : <AiOutlineStar className='cursor-pointer'/>}
       </td>
     
       <td>{coin.market_cap_rank}</td>

@@ -37,7 +37,7 @@ const Footer = () => {
               <div className='py-4'>
                 <form>
                   <input className='bg-primary border border-input p-2 mr-2 w-full shadow-xl rounded-2xl md:w-auto' type='email' placeholder='Enter your email' />
-                  <button className='bg-button text-btnText px-4 p-2 w-full rounded-2xl shadow-xl hover:shadow-2xl md:w-auto my-2'>Sign up</button>
+                 <button onClick={(e)=>e.preventDefault()} className='bg-button text-btnText px-4 p-2 w-full rounded-2xl shadow-xl hover:shadow-2xl md:w-auto my-2'>Sign up</button>
                 </form>
               </div>
               <div className='flex py-4 justify-between text-accent'>
